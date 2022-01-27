@@ -1,0 +1,14 @@
+@media only screen and (max-width: 600px) {
+    .testimonal{
+        margin-left: 0px !important;
+        width: 100% !important;
+        margin-top: -100%;
+    }
+  }
+@media (min-width:601px) and (max-width: 1000px) {
+    .testimonal{
+        margin-left: 20% !important;
+        width: 100% !important;
+        margin-top: -50%;
+    }
+  }

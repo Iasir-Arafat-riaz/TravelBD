@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../../shared/Footer/Footer";
 import Banner from "../Banner/Banner";
+import Testimonials from "../Testimonials/Testimonials";
 import TopSpots from "../TopSpots/TopSpots";
 import TravelersExp from "../TravelersExp/TravelersExp";
 
@@ -16,6 +17,7 @@ const HomeRoot = () => {
           <TopSpots/>
         </div>
       </div>
+      <Testimonials/>
       <Footer />
     </div>
   );

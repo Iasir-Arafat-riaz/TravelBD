@@ -1,0 +1,10 @@
+.testimonialStyle{
+    margin-top: 150px;
+    padding: 10px;
+}
+@media only screen and (max-width: 600px) {
+    .testimonialStyle{
+        margin-top: 0px;
+    }
+  
+}
