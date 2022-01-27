@@ -1,0 +1,10 @@
+.travelExp{
+    border-right: 2px solid rgb(185, 178, 178);
+    margin-left: 20px;
+}
+@media only screen and (max-width: 600px) {
+    .travelExp{
+        margin-left: 0;
+    }
+  
+}

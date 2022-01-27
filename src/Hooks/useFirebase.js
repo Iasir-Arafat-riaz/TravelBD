@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   getAuth,
   signInWithPopup,
@@ -8,152 +8,114 @@ import {
   signOut,
   updateProfile,
   signInWithEmailAndPassword,
+  
 } from "firebase/auth";
 import FirebaseInit from "../firebase/FirebaseInit/FirebaseInit";
-
-
-FirebaseInit()
-
+FirebaseInit();
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [admin, setAdmin] = useState(false);
-
+  const [error, setError] = useState("");
+  const [success,setSuccess]=useState("")
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
-
-  // register new user
-
-  const registerUser = (email, password, name, navigate, location) => {
-
-    setIsLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-
-      .then((userCredential) => {
-        setError('');
-        const newUser = { email, displayName: name };
-        setUser(newUser);
-        saveUser(email, name, 'POST');
-        updateProfile(auth.currentUser, {
-          displayName: name
-        }).then((user) => {
-          setSuccess("Your account create successfully");
-          const destination = location?.state?.from || '/';
-          navigate(destination);
-        }).catch((error) => {
-        });
-      })
-      .catch((error) => {
-        setSuccess("");
-        setError(error.message);
-
-      })
-      .finally(() => setIsLoading(false));
-  }
-
-  // login user
-  const loginUser = (email, password, location, navigate) => {
-    setIsLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const destination = location?.state?.from || '/';
-        navigate(destination);
-        setSuccess("Your login successfully");
-        setError("");
-        console.log(destination, "destination");
-      })
-      .catch((error) => {
-        setError(error.message);
-        setSuccess("");
-      })
-      .finally(() => setIsLoading(false));
-  }
-
-
-  // sign with google
-  const handaleGoogleSign = (location, navigate) => {
-    setIsLoading(true);
+  const googleSignIn = (navigate, location) => {
     signInWithPopup(auth, googleProvider)
-      .then(result => {
+      .then((result) => {
         setUser(result.user);
-        navigate(location?.state?.from || "/");
-        const user = result.user;
-
-        saveUser(user.email, user.displayName, "PUT");
-
-        setSuccess("Your login successfully");
+        navigate(location?.state?.from || "/Dashboard");
+        setError("");
       })
       .catch((error) => {
+        // Handle Errors here
         setError(error.message);
-        setSuccess("");;
+      });
+  };
+
+  const userRegistration = (
+    email,
+    password,
+    displayName,
+    navigate,
+    location
+  ) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        // Signed in
+        // const user = result.user;
+        const newUser = { email, displayName };
+        setUser(newUser);
+        updateProfile(auth.currentUser, {
+          displayName,
+          email,
+        })
+          .then(() => {
+            // Profile updated!
+            setSuccess("Your Profile Create Successfully")
+            setError("")
+            const destination =location?.state?.from ||"/"
+            navigate(destination)
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            setError(error.message)
+            // ...
+          });
       })
-      .finally(() => setIsLoading(false));
+      .catch((error) => {
+        setSuccess("")
+        setError(error.message);
+        // ..
+      });
+  };
+
+  //Sign in with username and password
+  const signInUser=(email, password,navigate,location)=>{
+    signInWithEmailAndPassword(auth, email, password)
+  .then((result) => {
+    // Signed in 
+    setUser(result.user) ;
+    setError("")
+    const destination = location?.state?.from || "/"
+    navigate(destination)
+    // ...
+  })
+  .catch((error) => {
+   
+    setError(error.message)
+  });
 
   }
 
 
   useEffect(() => {
-    setIsLoading(true);
     onAuthStateChanged(auth, (user) => {
+      setIsLoading(true);
       if (user) {
-        setUser(user)
+        setUser(user);
       } else {
-        setUser({})
+        setUser({});
       }
       setIsLoading(false);
-    })
-  }, [auth]);
+    });
+  }, []);
 
-
-  // log out method
-
-  const handaleLogOut = () => {
-    setIsLoading(true);
+  const logOut = () => {
     signOut(auth)
       .then(() => {
-        setUser({});
+        // Sign-out successful.
         setError("");
-        setSuccess("");
+        setSuccess("")
       })
-      .catch(error => setError(error.message))
-      .finally(() => setIsLoading(false));
-  }
-
-
-  // save user on database 
-  const saveUser = (email, displayName, method) => {
-    const user = { email, displayName };
-    fetch('https://glacial-shelf-30568.herokuapp.com/users', {
-      method: method,
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
-      .then()
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
-  // get web admin
-  useEffect(() => {
-    fetch(`https://glacial-shelf-30568.herokuapp.com/users/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setAdmin(data.Admin));
-  }, [user?.email]);
-
-  return {
-    handaleGoogleSign,
-    user,
-    loginUser,
-    error,
-    admin,
-    isLoading,
-    registerUser,
-    handaleLogOut,
-    success,
-  };
+  console.log(user);
+  return { user, googleSignIn, logOut, userRegistration,signInUser, error, isLoading,success };
 };
 
 export default useFirebase;

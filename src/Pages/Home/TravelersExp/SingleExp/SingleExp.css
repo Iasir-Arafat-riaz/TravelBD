@@ -1,0 +1,36 @@
+.blog{
+    display: flex;
+    /* align-items: center; */
+   
+    font-size: 20px;
+    border-bottom: 2px solid rgb(185, 178, 178);
+    margin-right: 5px;
+    margin-top: 20px;
+    
+}
+.blog img{
+    width: 400px;
+}
+@media only screen and (max-width: 600px) {
+    .blog{
+        flex-direction: column;
+  text-align: center;
+    }
+  
+}
+
+.informations{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    text-align: start;
+}
+.blog-name{
+    color: blue;
+}
+.regular-btn{
+    background-color: rgb(238, 203, 4);
+    padding: 5px 60px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}

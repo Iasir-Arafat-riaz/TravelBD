@@ -1,0 +1,47 @@
+.loginHeader{
+    color: rgb(5, 209, 56);
+    font-size: 60px;
+    font-weight: 700;
+    text-shadow: 2px 2px 2px #2f3030;
+}
+.login-section{
+    background-image: url("https://i.ibb.co/wghjFNv/jinni-Loginbg-1.png");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+.login-section input{
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+.login-button{
+    background-color: rgb(6, 211, 160);
+}
+
+.login-button:hover{
+background-color: rgb(230, 57, 92);
+color: wheat;
+}
+
+.newUsermsg{
+    color: rgb(245, 24, 69);
+    text-shadow: 2px 2px 2px #2f3030;
+    background-color: rgb(230, 219, 219);
+    padding:15px;
+    border-radius: 10px;
+    border: 2px solid rgb(153, 148, 136);
+}
+.newUsermsg:hover{
+    background-color: rgb(59, 6, 33);
+    color: white;
+}
+
+.pleaseRegister{
+    text-decoration: none;
+  
+}

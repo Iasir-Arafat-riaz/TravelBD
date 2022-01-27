@@ -1,13 +1,14 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import useFirebase from "../../../Hooks/useFirebase";
 import "./Navigation.css";
 
 const Navigation = () => {
   const navigate = useNavigate();
-  // const { handaleGoogleSign, error, user,handaleLogOut } = useFirebase();
-  const { user, handaleLogOut } = useFirebase();
+ 
+  const { user, logOut } = useAuth();
   const siteNameHandler = () => {
     navigate("/Home");
   };
@@ -80,7 +81,7 @@ const Navigation = () => {
             <span className="text-light mx-1">{user?.displayName}</span>
           )}
           {user.email ? (
-            <button onClick={handaleLogOut} className="logOutHdr">
+            <button onClick={logOut} className="logOutHdr">
               <b> Logout</b>
             </button>
           ) : (
