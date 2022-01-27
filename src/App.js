@@ -11,6 +11,8 @@ import Register from "./Pages/UserLogin/Register/Register";
 import ContextApiProvider from "./ContextApiProvider/ContextApiProvider";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import TravellerExpDetails from "./Pages/Home/TravelersExp/TravellerExpDetails/TravellerExpDetails";
+import DashBoardDefault from "./Pages/Dashboard/DashBoardDefault/DashBoardDefault";
+import PrivateRoute from "./Private/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -21,14 +23,45 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeRoot />} />
             <Route path="/Home" element={<HomeRoot />} />
-            <Route path="/:id" element={<TravellerExpDetails />} />
+            <Route path="/:id" element={<PrivateRoute><TravellerExpDetails /></PrivateRoute>} />
             <Route path="/Contact" element={<Contact />} />
 
             <Route path="/About" element={<About />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/Register" element={<Register />}></Route>
-            <Route path="/Dashboard" element={<Dashboard/>}>
+            <Route path="/Dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+              <Route path="/Dashboard" element={<DashBoardDefault />}></Route>
 
+              <Route path="ServiceReview" element={<AddReview />}></Route>
+
+              <Route path="AddBlog" element={<AddBlog />}></Route>
+
+              <Route
+                path="pendingPost"
+                element={
+                  <AdminRoute>
+                    <PendingBlog />
+                  </AdminRoute>
+                }
+              ></Route>
+
+              <Route
+                path="MakeAdmin"
+                element={
+                  <AdminRoute>
+                    <MakeAdmin />
+                  </AdminRoute>
+                }
+              ></Route>
+
+              <Route
+                path="ManageBlogs"
+                element={
+                  <AdminRoute>
+                    <ManageBlogs />
+                  </AdminRoute>
+                }
+              ></Route>
             </Route>
 
             <Route path="*" element={<Error />}></Route>
