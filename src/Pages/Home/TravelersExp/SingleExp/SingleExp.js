@@ -9,7 +9,7 @@ const SingleExp = ({ exp }) => {
   const { name, writer, desc1, blogImg, price,_id } = exp;
   console.log(name);
   const moreDetails=(id)=>{
-navigate(`/blog/${id}`)
+navigate(`/${id}`)
   }
   return (
     <div className="blog">

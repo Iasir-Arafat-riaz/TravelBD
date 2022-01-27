@@ -8,6 +8,7 @@ import {
   signOut,
   updateProfile,
   signInWithEmailAndPassword,
+  sendEmailVerification
   
 } from "firebase/auth";
 import FirebaseInit from "../firebase/FirebaseInit/FirebaseInit";
@@ -70,6 +71,10 @@ const useFirebase = () => {
         // ..
       });
   };
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser)
+        .then(result => { })
+};
 
   //Sign in with username and password
   const signInUser=(email, password,navigate,location)=>{
