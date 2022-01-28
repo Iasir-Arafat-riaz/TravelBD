@@ -8,7 +8,7 @@ const TopSpots = () => {
     fetch("http://localhost:5000/travellerExperience")
       .then((res) => res.json())
       .then((data) => setTopSpots(data));
-  }, [topSpots]);
+  }, []);
 
   console.log(topSpots);
   const filterTopSpots = topSpots.filter(spot=>spot.rating==5)
@@ -17,6 +17,7 @@ const TopSpots = () => {
 
   return (
     <div className="topSpots">
+        <h5 className="m-3"><b>Top Spots</b></h5>
     {
         filterTopSpots.map(topSpot=><Spot key={topSpot?._id} topSpot={topSpot} />)
     }
