@@ -152,6 +152,7 @@ const useFirebase = () => {
     error,
     isLoading,
     success,
+    admin
   };
 };
 
