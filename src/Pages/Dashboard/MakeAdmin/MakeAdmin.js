@@ -10,7 +10,7 @@ const MakeAdmin = () => {
   const createAdmin = (event) => {
     const user ={email}
     console.log(user);
-    fetch("http://localhost:5000/users/admin", {
+    fetch("https://frozen-falls-34021.herokuapp.com/users/admin", {
       method: "put",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),

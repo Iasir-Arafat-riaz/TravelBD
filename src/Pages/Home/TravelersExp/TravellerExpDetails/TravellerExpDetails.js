@@ -7,7 +7,7 @@ const TravellerExpDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/travellerExperience/${id}`)
+    fetch(`https://frozen-falls-34021.herokuapp.com/travellerExperience/${id}`)
       .then((res) => res.json())
       .then((data) => setBlogDetails(data));
   }, [id]);

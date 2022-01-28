@@ -9,7 +9,7 @@ const Testimonials = () => {
     const [reviews, setReviws] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/webreviews')
+        fetch('https://frozen-falls-34021.herokuapp.com/webreviews')
             .then(res => res.json())
             .then(data => setReviws(data));
     }, []);

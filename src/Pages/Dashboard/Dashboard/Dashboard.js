@@ -7,6 +7,7 @@ import './Dashboard.css';
 const Dashboard = () => {
 
     const { admin,logOut } = useAuth();
+    console.log(admin.admin);
 
     return (
       <div className="MotherDashboard container-fluid">
@@ -15,7 +16,7 @@ const Dashboard = () => {
           <div id="wrapper">
             <div  id="sidebar-wrapper">
               <div class="list-group list-group-flush my-3">
-                {!admin && (
+                {!admin.admin && (
                   <Link
                     to="/Dashboard/AddReview"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -23,7 +24,7 @@ const Dashboard = () => {
                     <i class="fas fa-project-diagram me-2"></i>Add Review
                   </Link>
                 )}
-                {!admin && (
+                {!admin.admin&& (
                   <Link
                     to="/Dashboard/AddBlog"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -31,7 +32,15 @@ const Dashboard = () => {
                     <i class="fas fa-chart-line me-2"></i>Add Blog
                   </Link>
                 )}
-                {!admin && (
+                {admin.admin&& (
+                  <Link
+                    to="/Dashboard/AdminAddBlog"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                  >
+                    <i class="fas fa-chart-line me-2"></i>Add Blog
+                  </Link>
+                )}
+                {admin.admin && (
                   <Link
                     to="/Dashboard/pendingPost"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -40,7 +49,7 @@ const Dashboard = () => {
                   </Link>
                 )}
 
-                {!admin && (
+                {admin.admin && (
                   <Link
                     to="/Dashboard/MakeAdmin"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -48,7 +57,7 @@ const Dashboard = () => {
                     <i class="fas fa-shopping-cart me-2"></i>MakeAdmin
                   </Link>
                 )}
-                {!admin && (
+                {admin.admin && (
                   <Link
                     to="/Dashboard/ManageBlogs"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -56,22 +65,7 @@ const Dashboard = () => {
                     <i class="fas fa-gift me-2"></i>Manage Blogs
                   </Link>
                 )}
-                {admin && (
-                  <Link
-                    to="/Dashboard/ManageBooking"
-                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                  >
-                    <i class="fas fa-comment-dots me-2"></i>Manage Order
-                  </Link>
-                )}
-                {admin && (
-                  <Link
-                    to="/Dashboard/MakeAdmin"
-                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                  >
-                    <i class="fas fa-map-marker-alt me-2"></i>Make Admin
-                  </Link>
-                )}
+                
 
                 <Link
                   onClick={logOut}

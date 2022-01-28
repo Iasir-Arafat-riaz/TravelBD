@@ -5,7 +5,7 @@ import "./TopSpots.css";
 const TopSpots = () => {
   const [topSpots, setTopSpots] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/travellerExperience")
+    fetch("https://frozen-falls-34021.herokuapp.com/travellerExperience")
       .then((res) => res.json())
       .then((data) => setTopSpots(data));
   }, []);

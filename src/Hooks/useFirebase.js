@@ -126,7 +126,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("http://localhost:5000/users", {
+    fetch("https://frozen-falls-34021.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -136,11 +136,14 @@ const useFirebase = () => {
   };
 
   // get web admin
+  console.log(user?.email);
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://frozen-falls-34021.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setAdmin(data.Admin));
+      .then((data) => setAdmin(data));
   }, [user?.email]);
+
+  console.log(admin);
 
   console.log(user);
   return {

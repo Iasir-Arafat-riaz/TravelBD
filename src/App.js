@@ -19,6 +19,8 @@ import PendingBlog from "./Pages/Dashboard/PendingBlog/PendingBlog";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import ManageBlogs from "./Pages/Dashboard/Dashboard/ManageBlogs/ManageBlogs";
 import Footer from "./Pages/shared/Footer/Footer";
+import AdminAddBlog from "./Pages/Dashboard/Dashboard/AdminAddBlog/AdminAddBlog";
+import AdminRoute from "./Private/PrivateRoute/AdminRoute";
 
 function App() {
   return (
@@ -55,12 +57,13 @@ function App() {
               <Route path="AddReview" element={<AddReview />}></Route>
 
               <Route path="AddBlog" element={<AddBlog />}></Route>
+              <Route path="AdminAddBlog" element={<AdminRoute><AdminAddBlog /></AdminRoute>}></Route>
 
-              <Route path="pendingPost" element={<PendingBlog />}></Route>
+              <Route path="pendingPost" element={<AdminRoute><PendingBlog /></AdminRoute>}></Route>
 
-              <Route path="MakeAdmin" element={<MakeAdmin />}></Route>
+              <Route path="MakeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
 
-              <Route path="ManageBlogs" element={<ManageBlogs />}></Route>
+              <Route path="ManageBlogs" element={<AdminRoute><ManageBlogs /></AdminRoute>}></Route>
             </Route>
 
             <Route path="*" element={<Error />}></Route>
