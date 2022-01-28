@@ -18,7 +18,7 @@ const HomeRoot = () => {
         </div>
       </div>
       <Testimonials/>
-      <Footer />
+     
     </div>
   );
 };

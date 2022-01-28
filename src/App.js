@@ -13,6 +13,12 @@ import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import TravellerExpDetails from "./Pages/Home/TravelersExp/TravellerExpDetails/TravellerExpDetails";
 import DashBoardDefault from "./Pages/Dashboard/DashBoardDefault/DashBoardDefault";
 import PrivateRoute from "./Private/PrivateRoute/PrivateRoute";
+import AddReview from "./Pages/Dashboard/AddReview/AddReview";
+import AddBlog from "./Pages/Dashboard/AddBlog/AddBlog";
+import PendingBlog from "./Pages/Dashboard/PendingBlog/PendingBlog";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
+import ManageBlogs from "./Pages/Dashboard/Dashboard/ManageBlogs/ManageBlogs";
+import Footer from "./Pages/shared/Footer/Footer";
 
 function App() {
   return (
@@ -23,49 +29,43 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeRoot />} />
             <Route path="/Home" element={<HomeRoot />} />
-            <Route path="/:id" element={<PrivateRoute><TravellerExpDetails /></PrivateRoute>} />
+            <Route
+              path="/:id"
+              element={
+                <PrivateRoute>
+                  <TravellerExpDetails />
+                </PrivateRoute>
+              }
+            />
             <Route path="/Contact" element={<Contact />} />
 
             <Route path="/About" element={<About />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/Register" element={<Register />}></Route>
-            <Route path="/Dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+            <Route
+              path="/Dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            >
               <Route path="/Dashboard" element={<DashBoardDefault />}></Route>
 
-              <Route path="ServiceReview" element={<AddReview />}></Route>
+              <Route path="AddReview" element={<AddReview />}></Route>
 
               <Route path="AddBlog" element={<AddBlog />}></Route>
 
-              <Route
-                path="pendingPost"
-                element={
-                  <AdminRoute>
-                    <PendingBlog />
-                  </AdminRoute>
-                }
-              ></Route>
+              <Route path="pendingPost" element={<PendingBlog />}></Route>
 
-              <Route
-                path="MakeAdmin"
-                element={
-                  <AdminRoute>
-                    <MakeAdmin />
-                  </AdminRoute>
-                }
-              ></Route>
+              <Route path="MakeAdmin" element={<MakeAdmin />}></Route>
 
-              <Route
-                path="ManageBlogs"
-                element={
-                  <AdminRoute>
-                    <ManageBlogs />
-                  </AdminRoute>
-                }
-              ></Route>
+              <Route path="ManageBlogs" element={<ManageBlogs />}></Route>
             </Route>
 
             <Route path="*" element={<Error />}></Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </ContextApiProvider>
     </div>
