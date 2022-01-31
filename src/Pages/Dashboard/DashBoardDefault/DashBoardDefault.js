@@ -1,10 +1,13 @@
 import React from "react";
-import video from "../../../videoAndImages/dashboard.mp4"
 import "./DashboardDefault.css"
+import bgImg from "../../../videoAndImages/TravelBd.png"
 
 const DashBoardDefault = () => {
   return (
-    <div className='dashboardDefault'>
+    <div className='dashboardDefault' style={{
+        backgroundImage: `url(${bgImg})`,
+       
+      }}>
     <h1 className='dashboardText'>TravelBD Dashboard</h1>
      </div>
   );

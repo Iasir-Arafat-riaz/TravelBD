@@ -8,10 +8,14 @@ const AddReview = () => {
     const { user } = useAuth();
     const [rating, setRating] = useState(1);
     const [userComment, setUserComment] = useState("");
+    const [profession,setProfession]=useState("")
   
     //Comment Field
     const comments = (e) => {
       setUserComment(e.target.value);
+    };
+    const TravellerProfession = (e) => {
+     setProfession(e.target.value)
     };
   
     const ratingOne = () => {
@@ -38,9 +42,10 @@ const AddReview = () => {
         email: user.email,
         description:userComment,
         rating: rating,
+        profession
       };
       console.log(commentObject);
-      axios.post("/reviews", commentObject).then((res) => {
+      axios.post("https://frozen-falls-34021.herokuapp.com/reviews", commentObject).then((res) => {
         console.log(res.status);
         if (res.status === 200) {
           setUserComment("");
@@ -63,6 +68,7 @@ const AddReview = () => {
         cols="15"
         rows="5"
       ></textarea>
+      <input className='reviewInput' required placeholder='enter your profession' onBlur={TravellerProfession}  type="text" />
       <br />
       <button onClick={ratingOne} className="reviewBtn">
         <b>1</b>

@@ -1,18 +1,19 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser,faStar } from '@fortawesome/free-solid-svg-icons'
 import "./SingleExp.css";
 import { useNavigate } from "react-router-dom";
 
 const SingleExp = ({ exp }) => {
     const navigate = useNavigate()
-  const { name, writer, desc1, blogImg, price,_id } = exp;
+  const { name, writer, desc1, blogImg, price,_id,rating } = exp;
   console.log(name);
   const moreDetails=(id)=>{
 navigate(`/${id}`)
   }
   return (
     <div className="blog">
+    
       <div>
         <img src={blogImg} alt="image" />
       </div>

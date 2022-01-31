@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser,faStar } from '@fortawesome/free-solid-svg-icons'
 import "./TravellerExpDetails.css";
 
 const TravellerExpDetails = () => {
@@ -13,9 +15,9 @@ const TravellerExpDetails = () => {
   }, [id]);
    
 //   const singleBlog= blogDetals.find(single=>single._id==id)
-  const { name, category, desc1, desc2, price, loaction, day, blogImg, writerImg, writer, date, facility, accommodation, _id } = blogDetals
+  const { name, category, desc1, desc2, price, loaction, day, blogImg, writerImg, writer, date, facility, accommodation, _id,rating } = blogDetals
 
-//   console.log(id,blogDetals,singleBlog);
+  console.log(rating);
   return (
     <section className='blog-details' style={{ background: "#FBF6F2" }}>
 
@@ -37,6 +39,47 @@ const TravellerExpDetails = () => {
         <h6 className='font-semibold'>
             <i class="far fa-clock ml-8 "></i> {date}
         </h6>
+        {rating == 5 ? (
+              <div className="icons">
+                <FontAwesomeIcon  icon={faStar} />
+                <FontAwesomeIcon  icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+            ) : rating < 5 && rating >= 4 ? (
+              <div >
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+            ) : rating < 4 && rating >= 3 ? (
+              <div >
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+            ) : rating < 3 && rating >= 2 ? (
+              <div >
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+            ) : (
+              <div >
+                <FontAwesomeIcon className="icons" icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+            )}
 
         <h6 className='font-semibold'>
             <i class="fas  fa-map-marker-alt"></i> {loaction}

@@ -9,14 +9,18 @@ const TravelersExp = () => {
       .then((res) => res.json())
       .then((data) => setTravellerExperince(data));
   }, []);
-  console.log(travellerExperince);
+  // console.log(travellerExperince);
+  const travellerBlog = travellerExperince.filter(blog=> blog.status=="approved")
+  const undefinedFixed = travellerExperince.filter(blog=> blog.status=="")
+  const newBlogs =[...travellerBlog,...undefinedFixed];
+  console.log(newBlogs)
   return (
     <div className="travelExp">
       <h2 className="mt-5">
         Traveller Experiences
       </h2>
       {
-          travellerExperince.map(exp=><SingleExp exp={exp}/>)
+          newBlogs.map(exp=><SingleExp exp={exp}/>)
       }
     </div>
   );
