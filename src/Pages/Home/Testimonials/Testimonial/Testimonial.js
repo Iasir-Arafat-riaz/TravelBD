@@ -8,7 +8,7 @@ const Testimonial = (props) => {
 
         <article
             className='p-9 bg-white testimonialStyle '
-            style={{ width: 400, zIndex: 999}}
+            style={{ zIndex: 999}}
         >
 
             <p className='text-justify'>"{description.slice(0, 220)}"</p>

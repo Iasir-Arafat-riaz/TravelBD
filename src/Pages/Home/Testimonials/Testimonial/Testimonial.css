@@ -1,10 +1,12 @@
 .testimonialStyle{
     margin-top: 150px;
     padding: 10px;
+    width: 400px;
 }
 @media only screen and (max-width: 600px) {
     .testimonialStyle{
         margin-top: 0px;
+        width: 100%;
     }
   
 }

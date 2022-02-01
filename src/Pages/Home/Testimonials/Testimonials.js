@@ -34,11 +34,11 @@ const Testimonials = () => {
             <article className='row container mx-auto items-center'>
 
                 <article className='col-lg-9 flex justify-center'>
-                    <img src="https://i.ibb.co/MBgVkJW/Tanguar-Haor-swamp-forests.png" width='450' alt="reviewbanner" />
+                    <img className='testimonialImg' src="https://i.ibb.co/MBgVkJW/Tanguar-Haor-swamp-forests.png"  alt="reviewbanner" />
                 </article>
 
                 <article className='col-lg-3 '>
-                    <Slider className='testimonal' {...slickSlider} style={{ marginLeft: "-450px", width: "450px" }}>
+                    <Slider className='testimonal' {...slickSlider} >
                         {
                             reviews.map(review => <Testimonial
                                 review={review}
