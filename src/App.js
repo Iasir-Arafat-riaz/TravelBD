@@ -21,8 +21,14 @@ import ManageBlogs from "./Pages/Dashboard/Dashboard/ManageBlogs/ManageBlogs";
 import Footer from "./Pages/shared/Footer/Footer";
 import AdminAddBlog from "./Pages/Dashboard/Dashboard/AdminAddBlog/AdminAddBlog";
 import AdminRoute from "./Private/PrivateRoute/AdminRoute";
+import Loading from "./Pages/shared/Loading/Loading";
+import useFirebase from "./Hooks/useFirebase";
 
 function App() {
+  const { isLoading } = useFirebase();
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="App">
       <ContextApiProvider>
@@ -57,13 +63,41 @@ function App() {
               <Route path="AddReview" element={<AddReview />}></Route>
 
               <Route path="AddBlog" element={<AddBlog />}></Route>
-              <Route path="AdminAddBlog" element={<AdminRoute><AdminAddBlog /></AdminRoute>}></Route>
+              <Route
+                path="AdminAddBlog"
+                element={
+                  <AdminRoute>
+                    <AdminAddBlog />
+                  </AdminRoute>
+                }
+              ></Route>
 
-              <Route path="pendingPost" element={<AdminRoute><PendingBlog /></AdminRoute>}></Route>
+              <Route
+                path="pendingPost"
+                element={
+                  <AdminRoute>
+                    <PendingBlog />
+                  </AdminRoute>
+                }
+              ></Route>
 
-              <Route path="MakeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
+              <Route
+                path="MakeAdmin"
+                element={
+                  <AdminRoute>
+                    <MakeAdmin />
+                  </AdminRoute>
+                }
+              ></Route>
 
-              <Route path="ManageBlogs" element={<AdminRoute><ManageBlogs /></AdminRoute>}></Route>
+              <Route
+                path="ManageBlogs"
+                element={
+                  <AdminRoute>
+                    <ManageBlogs />
+                  </AdminRoute>
+                }
+              ></Route>
             </Route>
 
             <Route path="*" element={<Error />}></Route>
