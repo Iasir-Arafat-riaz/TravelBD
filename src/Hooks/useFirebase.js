@@ -27,6 +27,7 @@ const useFirebase = () => {
       .then((result) => {
         setUser(result.user);
         navigate(location?.state?.from || "/Dashboard");
+        console.log(location?.state?.from);
         const user = result.user;
 
         saveUser(user.email, user.displayName, "PUT");
@@ -62,8 +63,8 @@ const useFirebase = () => {
             setSuccess("Your Profile Create Successfully");
             setError("");
 
-            const destination = location?.state?.from || "/";
-            navigate(destination);
+            const destination = "/";
+            navigate(location?.state?.from || destination);
             // ...
           })
           .catch((error) => {
@@ -93,6 +94,7 @@ const useFirebase = () => {
         setError("");
         const destination = location?.state?.from || "/";
         navigate(destination);
+        console.log(destination)
         // ...
       })
       .catch((error) => {

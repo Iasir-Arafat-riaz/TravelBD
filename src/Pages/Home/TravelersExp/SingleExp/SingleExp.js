@@ -15,7 +15,7 @@ navigate(`/${id}`)
     <div className="blog">
     
       <div>
-        <img src={blogImg} alt="image" />
+        <img src={blogImg} alt="" />
       </div>
       <div className="informations">
         <p className="blog-name">{name}</p>

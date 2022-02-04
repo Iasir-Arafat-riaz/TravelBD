@@ -16,7 +16,12 @@
         flex-direction: column;
   text-align: center;
     }
-  
+   
+    
+
+    .blog img{
+        width: 90%;
+    }
 }
 
 .informations{

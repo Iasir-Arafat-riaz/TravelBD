@@ -23,6 +23,8 @@ import AdminAddBlog from "./Pages/Dashboard/Dashboard/AdminAddBlog/AdminAddBlog"
 import AdminRoute from "./Private/PrivateRoute/AdminRoute";
 import Loading from "./Pages/shared/Loading/Loading";
 import useFirebase from "./Hooks/useFirebase";
+import EmailVarification from "./Private/PrivateRoute/EmailVarification";
+import EamailVarifyRedirect from "./Private/PrivateRoute/EamailVarifyRedirect";
 
 function App() {
   const { isLoading } = useFirebase();
@@ -37,11 +39,13 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeRoot />} />
             <Route path="/Home" element={<HomeRoot />} />
+            <Route path="/EmailVerify" element={<EmailVarification />} />
+
             <Route
               path="/:id"
               element={
                 <PrivateRoute>
-                  <TravellerExpDetails />
+                  <EamailVarifyRedirect><TravellerExpDetails /></EamailVarifyRedirect>
                 </PrivateRoute>
               }
             />
@@ -54,7 +58,7 @@ function App() {
               path="/Dashboard"
               element={
                 <PrivateRoute>
-                  <Dashboard />
+                  <EamailVarifyRedirect><Dashboard /></EamailVarifyRedirect>
                 </PrivateRoute>
               }
             >
