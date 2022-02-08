@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser,faStar } from '@fortawesome/free-solid-svg-icons'
 import "./TravellerExpDetails.css";
@@ -17,7 +18,7 @@ const TravellerExpDetails = () => {
 //   const singleBlog= blogDetals.find(single=>single._id==id)
   const { name, category, desc1, desc2, price, loaction, day, blogImg, writerImg, writer, date, facility, accommodation, _id,rating } = blogDetals
 
-  console.log(rating);
+  //console.log(rating);
   return (
     <section className='blog-details' style={{ background: "#FBF6F2" }}>
 
@@ -32,7 +33,7 @@ const TravellerExpDetails = () => {
         <article className=' flex items-center gap-3'>
 
             <img src={writerImg} className='rounded-circle' width="50" height="50" alt="blogImgae" />
-            <h6 className='font-semibold'>{writer}</h6>
+            <h6 className='font-semibold'> <FontAwesomeIcon  icon={faUser }/> {writer}</h6>
 
         </article>
 

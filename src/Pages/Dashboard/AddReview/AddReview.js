@@ -33,7 +33,7 @@ const AddReview = () => {
     const ratingFive = () => {
       setRating(5);
     };
-    console.log(rating);
+    //console.log(rating);
   
     const reviewForm = (e) => {
       e.preventDefault()
@@ -44,9 +44,9 @@ const AddReview = () => {
         rating: rating,
         profession
       };
-      console.log(commentObject);
+      //console.log(commentObject);
       axios.post("https://frozen-falls-34021.herokuapp.com/reviews", commentObject).then((res) => {
-        console.log(res.status);
+        //console.log(res.status);
         if (res.status === 200) {
           setUserComment("");
           Swal.fire("Your Review Submitted");

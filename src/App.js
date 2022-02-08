@@ -41,24 +41,25 @@ function App() {
             <Route path="/Home" element={<HomeRoot />} />
             <Route path="/EmailVerify" element={<EmailVarification />} />
 
-            <Route
-              path="/:id"
-              element={
-                <PrivateRoute>
-                  <EamailVarifyRedirect><TravellerExpDetails /></EamailVarifyRedirect>
-                </PrivateRoute>
-              }
-            />
             <Route path="/Contact" element={<Contact />} />
 
             <Route path="/About" element={<About />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/Register" element={<Register />}></Route>
+
+            <Route
+              path="/Spot/:id"
+              element={
+                <PrivateRoute>
+                  <TravellerExpDetails />
+                </PrivateRoute>
+              }
+            />
             <Route
               path="/Dashboard"
               element={
                 <PrivateRoute>
-                  <EamailVarifyRedirect><Dashboard /></EamailVarifyRedirect>
+                  <Dashboard />
                 </PrivateRoute>
               }
             >

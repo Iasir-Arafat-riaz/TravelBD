@@ -5,7 +5,7 @@ const Spot = ({topSpot}) => {
     const navigate = useNavigate()
     const {blogImg,name,rating,_id}=topSpot
 const detailTopSpot=(id)=>{
-console.log("hobee");
+//console.log("hobee");
 navigate(`/${id}`)
 }
     return (

@@ -9,14 +9,14 @@ const MakeAdmin = () => {
   };
   const createAdmin = (event) => {
     const user ={email}
-    console.log(user);
+    //console.log(user);
     fetch("https://frozen-falls-34021.herokuapp.com/users/admin", {
       method: "put",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
     })
     .then(res=>res.json())
-    .then(data=>{console.log(data)
+    .then(data=>{//console.log(data)
     if(data.modifiedCount){
         setEmail("")
         Swal.fire('New Admin Created successfully')

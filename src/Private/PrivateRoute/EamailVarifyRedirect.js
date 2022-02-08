@@ -5,7 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 const EamailVarifyRedirect = ({children}) => {
     const location=useLocation()
     const {user}=useAuth()
-    console.log(user);
+    //console.log(user);
     if(!user.emailVerified){
         return <Navigate state={{from:location}} to="/EmailVerify"/>
     }

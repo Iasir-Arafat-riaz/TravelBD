@@ -18,26 +18,31 @@ const useFirebase = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [admin, setAdmin] = useState(false);
-
+  
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
-  const googleSignIn = (navigate, location) => {
+  const handaleGoogleSign = (location, navigate) => {
+    setIsLoading(true);
     signInWithPopup(auth, googleProvider)
-      .then((result) => {
+      .then(result => {
         setUser(result.user);
-        navigate(location?.state?.from || "/Dashboard");
+        // navigate(location?.state?.from || "/");
+        navigate("/Dashboard");
         console.log(location?.state?.from);
         const user = result.user;
 
         saveUser(user.email, user.displayName, "PUT");
-        setError("");
+
+        setSuccess("Your login successfully");
       })
       .catch((error) => {
-        // Handle Errors here
         setError(error.message);
-      });
-  };
+        setSuccess("");;
+      })
+      .finally(() => setIsLoading(false));
+
+  }
 
   const userRegistration = (
     email,
@@ -81,7 +86,7 @@ const useFirebase = () => {
   };
   const verifyEmail = () => {
     sendEmailVerification(auth.currentUser).then((result) => {
-      console.log(result);
+      //console.log(result);
     });
   };
 
@@ -94,7 +99,7 @@ const useFirebase = () => {
         setError("");
         const destination = location?.state?.from || "/";
         navigate(destination);
-        console.log(destination)
+        //console.log(destination)
         // ...
       })
       .catch((error) => {
@@ -138,19 +143,19 @@ const useFirebase = () => {
   };
 
   // get web admin
-  console.log(user?.email);
+  //console.log(user?.email);
   useEffect(() => {
     fetch(`https://frozen-falls-34021.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data));
   }, [user?.email]);
 
-  console.log(admin);
+  //console.log(admin);
 
-  console.log(user);
+  //console.log(user);
   return {
     user,
-    googleSignIn,
+    handaleGoogleSign,
     logOut,
     userRegistration,
     signInUser,

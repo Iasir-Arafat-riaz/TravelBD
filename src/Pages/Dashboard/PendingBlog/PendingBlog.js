@@ -28,7 +28,7 @@ const PendingBlog = () => {
   const statusConfirm = (orderId) => {
     setStatus("approved");
     const updateStatus = { status: status };
-    console.log(status, orderId);
+    //console.log(status, orderId);
     fetch(`https://frozen-falls-34021.herokuapp.com/blog/${orderId}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
@@ -36,7 +36,7 @@ const PendingBlog = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-          console.log(result)
+          //console.log(result)
              
           Swal.fire('This Order status confirm ') 
           window.location.reload()    

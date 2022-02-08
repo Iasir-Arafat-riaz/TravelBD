@@ -12,13 +12,13 @@ const Register = () => {
  
   // isLoading, error
   const { user, userRegistration, isLoading, success,error } = useFirebase();
-  console.log(user);
+  //console.log(user);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const registerInput = (e) => {
-    // console.log(e.target.value);
+    // //console.log(e.target.value);
     const name = e.target.name;
     const fieldValue = e.target.value;
 
@@ -27,10 +27,10 @@ const Register = () => {
     setUserRegister(signInUser);
   };
 
-  console.log(userRegister);
+  //console.log(userRegister);
   const registeration = (e) => {
     e.preventDefault();
-    // console.log(userRegister);
+    // //console.log(userRegister);
     if (userRegister.password !== userRegister.password2) {
       // alert("password not matched");
       Swal.fire({

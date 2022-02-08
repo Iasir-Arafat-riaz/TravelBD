@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faIcons,faWarning, faAdd, faDashboard,faUser} from '@fortawesome/free-solid-svg-icons'
 
 import './Dashboard.css';
 
 const Dashboard = () => {
 
     const { admin,logOut } = useAuth();
-    console.log(admin.admin);
+    //console.log(admin.admin);
 
     return (
       <div className="MotherDashboard container-fluid">
@@ -37,7 +39,8 @@ const Dashboard = () => {
                     to="/Dashboard/AdminAddBlog"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                   >
-                    <i class="fas fa-chart-line me-2"></i>Add Blog
+                    {/* <i class="fas fa-chart-line me-2"></i>Add Blog */}
+                    <FontAwesomeIcon  icon={faAdd} />  Add Blog
                   </Link>
                 )}
                 {admin.admin && (
@@ -45,7 +48,7 @@ const Dashboard = () => {
                     to="/Dashboard/pendingPost"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                   >
-                    <i class="fas fa-paperclip me-2"></i>Pending Post
+                   <FontAwesomeIcon  icon={faWarning} /> Pending Post
                   </Link>
                 )}
 
@@ -54,7 +57,7 @@ const Dashboard = () => {
                     to="/Dashboard/MakeAdmin"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                   >
-                    <i class="fas fa-shopping-cart me-2"></i>MakeAdmin
+                    <FontAwesomeIcon  icon={faDashboard} /> MakeAdmin
                   </Link>
                 )}
                 {admin.admin && (
@@ -62,7 +65,8 @@ const Dashboard = () => {
                     to="/Dashboard/ManageBlogs"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
                   >
-                    <i class="fas fa-gift me-2"></i>Manage Blogs
+                    {/* <i class="fas fa-gift me-2"></i>Manage Blogs */}
+                    <FontAwesomeIcon  icon={faIcons} /> Manage Blogs
                   </Link>
                 )}
                 
@@ -72,7 +76,8 @@ const Dashboard = () => {
                   to="/Home"
                   class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
                 >
-                  <i class="fas fa-power-off me-2"></i>Logout
+                  {/* <i class="fas fa-power-off me-2"></i>Logout */}
+                  <FontAwesomeIcon  icon={faUser} /> Logout
                 </Link>
               </div>
             </div>

@@ -7,7 +7,7 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    //console.log(e.target);
     emailjs
       .sendForm(
         "service_ntuzutj",
@@ -17,12 +17,12 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          //console.log(result.text);
           e.target.reset();
           Swal.fire("Your Message send successfully");
         },
         (error) => {
-          console.log(error.text);
+          //console.log(error.text);
         }
       );
   };

@@ -22,7 +22,7 @@ const AdminAddBlog = () => {
         e.preventDefault();
         const data = { name, loaction: location, day, writer: writerName, writerImg: writerImage, desc1: description, facility, accommodation, date, price, category, status: 'approved', blogImg: image, rating };
 
-        console.log(data);
+        //console.log(data);
 
         fetch('https://frozen-falls-34021.herokuapp.com/blog', {
             method: "POST",

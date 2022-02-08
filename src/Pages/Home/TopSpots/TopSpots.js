@@ -10,9 +10,9 @@ const TopSpots = () => {
       .then((data) => setTopSpots(data));
   }, []);
 
-  console.log(topSpots);
+  //console.log(topSpots);
   const filterTopSpots = topSpots.filter(spot=>spot.rating==5)
-  console.log(filterTopSpots);
+  //console.log(filterTopSpots);
   
 
   return (

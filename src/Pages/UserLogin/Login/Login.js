@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 
 import "./Login.css"
@@ -9,11 +9,11 @@ const Login = () => {
     const [userLoggedIn,setUserLoggedIn]=useState({})
 const location = useLocation()
 const navigate = useNavigate()
-    const {googleSignIn,error,signInUser}=useFirebase()
+    const {handaleGoogleSign,error,signInUser}=useFirebase()
 
     //login with email and password
     const loginInput=(e)=>{
-        console.log(e.target.value)
+        //console.log(e.target.value)
         const name = e.target.name;
         const fieldValue= e.target.value;
     
@@ -22,7 +22,7 @@ const navigate = useNavigate()
         setUserLoggedIn(signInUser)
     
       }
-      // console.log(userLoggedIn)
+      // //console.log(userLoggedIn)
       const userLogin=(e)=>{
     
         signInUser(userLoggedIn.email,userLoggedIn.password,navigate,location)
@@ -44,7 +44,7 @@ const navigate = useNavigate()
         <input type="submit" value="Login Now" className="login-button" />
         </form>
   <br />
-        <Button onClick={()=>googleSignIn(navigate,location)} variant="warning">
+        <Button onClick={() => handaleGoogleSign(location, navigate)} variant="warning">
           <b>Login with google</b>
         </Button>
   <br/>
