@@ -5,10 +5,10 @@ import Loading from '../../Pages/shared/Loading/Loading';
 
 const AdminRoute = ({children}) => { const location=useLocation()
     const { user, isLoading, admin } = useAuth();
-    if (!admin.admin) {
+    if (!admin) {
       return <Loading></Loading>
     }
-    return <div>{user.email && admin.admin ? children : <Navigate state={{from:location}} to="/"/>}</div>
+    return <div>{user.email && admin ? children : <Navigate state={{from:location}} to="/"/>}</div>
 };
 
 export default AdminRoute;

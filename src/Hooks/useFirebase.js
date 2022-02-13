@@ -27,8 +27,8 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then(result => {
         setUser(result.user);
-        // navigate(location?.state?.from || "/");
-        navigate("/Dashboard");
+        navigate(location?.state?.from || "/");
+        // navigate("/Dashboard");
         console.log(location?.state?.from);
         const user = result.user;
 
@@ -117,7 +117,7 @@ const useFirebase = () => {
       }
       setIsLoading(false);
     });
-  }, []);
+  }, [auth,admin]);
 
   const logOut = () => {
     signOut(auth)
@@ -147,7 +147,7 @@ const useFirebase = () => {
   useEffect(() => {
     fetch(`https://frozen-falls-34021.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setAdmin(data));
+      .then((data) => setAdmin(data.admin));
   }, [user?.email]);
 
   //console.log(admin);

@@ -48,6 +48,7 @@ function App() {
             <Route path="/Register" element={<Register />}></Route>
 
             <Route
+          
               path="/Spot/:id"
               element={
                 <PrivateRoute>
@@ -105,6 +106,7 @@ function App() {
               ></Route>
             </Route>
 
+            {/* <Route path="Home/Spot/*" element={<Error />}></Route> */}
             <Route path="*" element={<Error />}></Route>
           </Routes>
           <Footer />

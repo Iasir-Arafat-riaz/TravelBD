@@ -18,7 +18,7 @@ const Dashboard = () => {
           <div id="wrapper">
             <div  id="sidebar-wrapper">
               <div class="list-group list-group-flush my-3">
-                {!admin.admin && (
+                {!admin && (
                   <Link
                     to="/Dashboard/AddReview"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -26,7 +26,7 @@ const Dashboard = () => {
                     <i class="fas fa-project-diagram me-2"></i>Add Review
                   </Link>
                 )}
-                {!admin.admin&& (
+                {!admin&& (
                   <Link
                     to="/Dashboard/AddBlog"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     <i class="fas fa-chart-line me-2"></i>Add Blog
                   </Link>
                 )}
-                {admin.admin&& (
+                {admin&& (
                   <Link
                     to="/Dashboard/AdminAddBlog"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -43,7 +43,7 @@ const Dashboard = () => {
                     <FontAwesomeIcon  icon={faAdd} />  Add Blog
                   </Link>
                 )}
-                {admin.admin && (
+                {admin && (
                   <Link
                     to="/Dashboard/pendingPost"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -52,7 +52,7 @@ const Dashboard = () => {
                   </Link>
                 )}
 
-                {admin.admin && (
+                {admin && (
                   <Link
                     to="/Dashboard/MakeAdmin"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -60,7 +60,7 @@ const Dashboard = () => {
                     <FontAwesomeIcon  icon={faDashboard} /> MakeAdmin
                   </Link>
                 )}
-                {admin.admin && (
+                {admin && (
                   <Link
                     to="/Dashboard/ManageBlogs"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
